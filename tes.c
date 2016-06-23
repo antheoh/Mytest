@@ -2,5 +2,5 @@
 
 main()
 {
-	printf("hellow"):
+	printf("hellow");
 )
