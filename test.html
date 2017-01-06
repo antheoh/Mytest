@@ -18,14 +18,13 @@
 
 
             var movie_string = xHR.responseText;  //apantisi server
-            var movie_obj = JSON.parse(movie_string);
-            alert(movie_obj.title);
-            alert(movie_obj.genres);
-      
-
-
-
-
+            console.log('responseText'+ xHR.responseText);
+            try {
+              var movie_obj = JSON.parse(movie_string);
+              alert(movie_obj.title);
+            } catch(err) {
+              console.log(err.message + "in "+ xHR.responseText)
+            }
 
           }
         }
