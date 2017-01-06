@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Lab 4.3</title>
+    <script type="text/Javascript">
+    function sendRequest(){
+      var xHR = new XMLHttpRequest();
+      var mid = document.getElementById("keyword").value;
+      var url = "http://62.217.127.19:8080/MovielensDbApi/webresources/entities.movie/"+mid;
+      xHR.open("GET", url, true);
+      xHR.send();
+      xHR.onreadystatechange = function(){
+        if (xHR.readyState == 4){
+          if (xHR.status == 200){
+            /*var xml = xHR.responseXML;
+            var rspElem = xml.getElementsByTagName("rsp")[0];
+            alert(rspElem.getAttribute("stat"));
+*/
+
+
+            var movie_string = xHR.responseText;  //apantisi server
+            var movie_obj = JSON.parse(movie_string);
+            alert(movie_obj.title);
+            alert(movie_obj.genres);
+      
+
+
+
+
+
+          }
+        }
+      };
+    }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="keyword"/>
+    <input type="button" value="OK" onclick="sendRequest();"/>
+    <div id="contentArea"/>
+  </body>
+</html>
